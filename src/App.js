@@ -13,13 +13,14 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: '#fff'
   },
   hero: {
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1343&q=80')`,
     height: '500px',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -29,7 +30,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',
-    fontsize: '4rem'
+    fontSize: '4rem',
+    [theme.breakpoints.down('sm')]: {
+      height: 300,
+      fontSize: '3em'
+    }
   },
   blogsContainer: {
     paddingTop: theme.spacing(3)
@@ -44,13 +49,17 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: 240
   },
-  CardActions: {
+  cardActions: {
     display: 'flex',
     margin: '0 10px',
     justifyContent: 'space-between'
   },
   author: {
     display: 'flex'
+  },
+  paginationContainer: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 }));
 
@@ -73,14 +82,13 @@ function App() {
         <Typography variant="h4" className={classes.blogTitle}>
           Articles
         </Typography>
-        <Grid Container spacing={3}>
+        <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=1352&q=80"
+                  image="https://images.unsplash.com/photo-1570717173024-ec8081c8f8e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -98,12 +106,9 @@ function App() {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions className={classes.CardActions}>
+              <CardActions className={classes.cardActions}>
                 <Box className={classes.author}>
-                  <Avatar
-                    src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=942&q=80"
-                  />
+                  <Avatar src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=942&q=80" />
                   <Box ml={2}>
                     <Typography variant="subtitle2" component="p">
                       ペッパー
@@ -128,13 +133,12 @@ function App() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=1352&q=80"
+                  image="https://images.unsplash.com/photo-1591608516485-a1a53df39498?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    React useContext
+                    React Router
                   </Typography>
                   <Typography
                     variant="body2"
@@ -147,12 +151,9 @@ function App() {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions className={classes.CardActions}>
+              <CardActions className={classes.cardActions}>
                 <Box className={classes.author}>
-                  <Avatar
-                    src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=942&q=80"
-                  />
+                  <Avatar src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=942&q=80" />
                   <Box ml={2}>
                     <Typography variant="subtitle2" component="p">
                       ペッパー
@@ -177,8 +178,7 @@ function App() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=1352&q=80"
+                  image="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -196,12 +196,9 @@ function App() {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions className={classes.CardActions}>
+              <CardActions className={classes.cardActions}>
                 <Box className={classes.author}>
-                  <Avatar
-                    src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=942&q=80"
-                  />
+                  <Avatar src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=942&q=80" />
                   <Box ml={2}>
                     <Typography variant="subtitle2" component="p">
                       ペッパー
@@ -226,8 +223,7 @@ function App() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=1352&q=80"
+                  image="https://images.unsplash.com/photo-1574065442320-02d4fb4fdac1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -245,12 +241,9 @@ function App() {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions className={classes.CardActions}>
+              <CardActions className={classes.cardActions}>
                 <Box className={classes.author}>
-                  <Avatar
-                    src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&
-                  auto=format&fit=crop&w=942&q=80"
-                  />
+                  <Avatar src="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=942&q=80" />
                   <Box ml={2}>
                     <Typography variant="subtitle2" component="p">
                       ペッパー
@@ -271,6 +264,9 @@ function App() {
             </Card>
           </Grid>
         </Grid>
+        <Box my={4} className={classes.paginationContainer}>
+          <Pagination count={10} />
+        </Box>
       </Container>
     </div>
   );
